@@ -394,6 +394,7 @@ also appear in PAIRS."
               (eshell-set-path path)
             (setq-local eshell-path-env path)))
         (when-let* ((info-path (getenv-internal "INFOPATH" env)))
+          (require 'info)
           (setq-local Info-directory-list
                       (append (seq-filter #'identity (parse-colon-path info-path))
                               (when (boundp 'Info-directory-list)
